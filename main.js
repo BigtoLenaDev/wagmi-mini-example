@@ -1,6 +1,6 @@
 'use strict'
 
-import { configureChains, connect, createConfig, InjectedConnector, mainnet } from '@wagmi/core'
+import { configureChains, connect, createConfig, InjectedConnector } from '@wagmi/core'
 import { publicProvider } from '@wagmi/core/providers/public'
 import { WalletConnectConnector } from '@wagmi/core/connectors/walletConnect'
 import { polygon } from "viem/chains";
