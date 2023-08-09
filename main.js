@@ -1,9 +1,9 @@
 'use strict'
 
-import { configureChains, connect, createConfig, InjectedConnector } from '@wagmi/core'
+import { configureChains, connect, createConfig, disconnect, InjectedConnector } from '@wagmi/core'
 import { publicProvider } from '@wagmi/core/providers/public'
 import { WalletConnectConnector } from '@wagmi/core/connectors/walletConnect'
-import { polygon } from "viem/chains";
+import { polygon, mainnet, polygonMumbai } from "viem/chains";
 
 
 const projectId = import.meta.env.VITE_PROJECT_ID
@@ -36,9 +36,14 @@ const wagmiConfig = createConfig({
     webSocketPublicClient
 });
 
-document.getElementById('my-button').addEventListener('click', async () => {
-    const { address } = await connect({
+document.getElementById('connect-button').addEventListener('click', async () => {
+    const { account } = await connect({
         connector: walletConnectConnector
     })
-    console.log(`address: ${address}`)
+    console.log(`address: ${account}`)
+})
+
+document.getElementById('disconnect-button').addEventListener('click', async () => {
+    await disconnect()
+    console.log(`Disconnected!`)
 })
